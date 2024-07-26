@@ -1,0 +1,26 @@
+<!-- src/app/pages/incidencia-detalle/incidencia-detalle.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles de Incidencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="incidencia">
+    <ion-card-header>
+      <ion-card-title>{{incidencia.titulo}}</ion-card-title>
+      <ion-card-subtitle>{{incidencia.fecha}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{incidencia.descripcion}}</p>
+      <img [src]="incidencia.foto" *ngIf="incidencia.foto" />
+      <audio controls *ngIf="incidencia.audio">
+        <source [src]="incidencia.audio" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

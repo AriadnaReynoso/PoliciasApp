@@ -1,0 +1,36 @@
+<!-- src/app/pages/incidencias/incidencias.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro de Incidencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label>Título</ion-label>
+      <ion-input [(ngModel)]="incidencia.titulo" name="titulo" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-datetime [(ngModel)]="incidencia.fecha" name="fecha" required></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-textarea [(ngModel)]="incidencia.descripcion" name="descripcion" required></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Foto</ion-label>
+      <input type="file" (change)="onFileChange($event)" />
+    </ion-item>
+    <ion-item>
+      <ion-label>Audio</ion-label>
+      <input type="file" (change)="onAudioChange($event)" />
+    </ion-item>
+    <ion-button expand="full" type="submit">Guardar Incidencia</ion-button>
+  </form>
+  <ion-list>
+    <ion-item *ngFor="let incident of incidents" (click)="openDetail(incident.id)">
+      <ion-label>{{incident.titulo}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
